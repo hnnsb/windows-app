@@ -1,6 +1,6 @@
 {
-  "short_name": "TanStack App",
-  "name": "Create TanStack App Sample",
+  "short_name": "Windows App",
+  "name": "A sample app using retro windows styling",
   "icons": [
     {
       "src": "favicon.ico",
