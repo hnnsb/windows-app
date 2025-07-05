@@ -1,1 +1,0 @@
-import{j as t,P as e}from"./index-C3mr9AMF.js";const i=function(){return t.jsx("div",{children:t.jsx(e,{title:"Route B",style:{width:"400px",height:"300px"},children:t.jsx("p",{children:"Some content"})})})};export{i as component};
