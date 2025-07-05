@@ -5,7 +5,7 @@ import { resolve } from 'node:path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/windows-app',
+  base: '/windows-app/',
   plugins: [
     tanstackRouter({
     target: 'react',
@@ -13,10 +13,6 @@ export default defineConfig({
     }),
     viteReact()
   ],
-  test: {
-    globals: true,
-    environment: 'jsdom',
-  },
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),

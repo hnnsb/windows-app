@@ -1,6 +1,6 @@
 import {StrictMode, useEffect} from 'react'
 import ReactDOM from 'react-dom/client'
-import {createRouter, Link, RouterProvider} from '@tanstack/react-router'
+import {createRouter, RouterProvider} from '@tanstack/react-router'
 
 import theme98Url from './themes/local-98.css?url';
 import themeXpUrl from './themes/local-xp.css?url';
@@ -22,6 +22,7 @@ const themes = {
 // Create a new router instance
 const router = createRouter({
   routeTree,
+  basepath: "/windows-app",
   context: {},
   defaultPreload: 'intent',
   scrollRestoration: true,
@@ -41,7 +42,7 @@ function ThemeLoader() {
   const {theme} = useTheme();
 
   useEffect(() => {
-    let link = document.getElementById("theme-link");
+    let link = document.getElementById("theme-link") as HTMLLinkElement | null;
     if (!link) {
       link = document.createElement("link");
       link.rel = "stylesheet";
