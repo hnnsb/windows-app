@@ -1,0 +1,65 @@
+.start-bar {
+    width: 100%;
+    height: 2rem;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.start-group {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+}
+
+.start-group > * {
+    margin-right: 4px;
+    height: 100%;
+}
+
+.group-grab {
+    background: silver;
+    height: 2rem;
+    width: 4px;
+    box-shadow: inset -1px -1px grey,
+    inset 1px 1px #ffffff;
+}
+
+.separator {
+    background: silver;
+    height: 100%;
+    width: 3px;
+    box-shadow: inset 1px 1px grey,
+    inset -1px -1px #ffffff;
+}
+
+.start-button {
+    font-weight: bold;
+    height: 100%;
+}
+
+.icon-button {
+    min-width: 0;
+    padding: 0;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+.clock {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.time {
+    padding: 5px;
+}

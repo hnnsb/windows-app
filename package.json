@@ -1,6 +1,6 @@
 {
   "name": "windows-app",
-  "private": true,
+  "homepage": "https://hnnsb.github.io/windows-app/",
   "type": "module",
   "scripts": {
     "dev": "vite --port 3000",

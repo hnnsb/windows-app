@@ -180,7 +180,7 @@ Now you can use `useQuery` to fetch your data.
 ```tsx
 import { useQuery } from "@tanstack/react-query";
 
-import "./App.css";
+import "./Desktop.css";
 
 function App() {
   const { data } = useQuery({
@@ -223,7 +223,7 @@ Now let's create a simple counter in the `src/App.tsx` file as a demonstration.
 ```tsx
 import { useStore } from "@tanstack/react-store";
 import { Store } from "@tanstack/store";
-import "./App.css";
+import "./Desktop.css";
 
 const countStore = new Store(0);
 
@@ -248,7 +248,7 @@ Let's check this out by doubling the count using derived state.
 ```tsx
 import { useStore } from "@tanstack/react-store";
 import { Store, Derived } from "@tanstack/store";
-import "./App.css";
+import "./Desktop.css";
 
 const countStore = new Store(0);
 

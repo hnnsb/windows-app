@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as windowsRouteBRouteImport } from './routes/(windows)/routeB'
+import { Route as windowsRouteARouteImport } from './routes/(windows)/routeA'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const windowsRouteBRoute = windowsRouteBRouteImport.update({
+  id: '/(windows)/routeB',
+  path: '/routeB',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const windowsRouteARoute = windowsRouteARouteImport.update({
+  id: '/(windows)/routeA',
+  path: '/routeA',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/routeA': typeof windowsRouteARoute
+  '/routeB': typeof windowsRouteBRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/routeA': typeof windowsRouteARoute
+  '/routeB': typeof windowsRouteBRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/(windows)/routeA': typeof windowsRouteARoute
+  '/(windows)/routeB': typeof windowsRouteBRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/routeA' | '/routeB'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/routeA' | '/routeB'
+  id: '__root__' | '/' | '/(windows)/routeA' | '/(windows)/routeB'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  windowsRouteARoute: typeof windowsRouteARoute
+  windowsRouteBRoute: typeof windowsRouteBRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(windows)/routeB': {
+      id: '/(windows)/routeB'
+      path: '/routeB'
+      fullPath: '/routeB'
+      preLoaderRoute: typeof windowsRouteBRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(windows)/routeA': {
+      id: '/(windows)/routeA'
+      path: '/routeA'
+      fullPath: '/routeA'
+      preLoaderRoute: typeof windowsRouteARouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  windowsRouteARoute: windowsRouteARoute,
+  windowsRouteBRoute: windowsRouteBRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

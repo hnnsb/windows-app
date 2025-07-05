@@ -1,0 +1,10 @@
+@import "98.css";
+
+@import "./98/StartBar.css";
+
+body {
+    background-image: url('/bg98.jpeg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}

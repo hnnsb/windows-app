@@ -1,12 +1,23 @@
-import { StrictMode } from 'react'
+import {StrictMode, useEffect} from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider, createRouter } from '@tanstack/react-router'
+import {createRouter, Link, RouterProvider} from '@tanstack/react-router'
+
+import theme98Url from './themes/local-98.css?url';
+import themeXpUrl from './themes/local-xp.css?url';
 
 // Import the generated route tree
-import { routeTree } from './routeTree.gen'
+import {routeTree} from './routeTree.gen'
 
 import './styles.css'
+import {ThemeProvider, useTheme} from "@/context/ThemeContext.tsx";
 import reportWebVitals from './reportWebVitals.ts'
+import NotFound from "@/components/NotFound.tsx";
+
+
+const themes = {
+  "98": theme98Url,
+  "xp": themeXpUrl,
+};
 
 // Create a new router instance
 const router = createRouter({
@@ -16,6 +27,7 @@ const router = createRouter({
   scrollRestoration: true,
   defaultStructuralSharing: true,
   defaultPreloadStaleTime: 0,
+  defaultNotFoundComponent: NotFound,
 })
 
 // Register the router instance for type safety
@@ -25,13 +37,32 @@ declare module '@tanstack/react-router' {
   }
 }
 
+function ThemeLoader() {
+  const {theme} = useTheme();
+
+  useEffect(() => {
+    let link = document.getElementById("theme-link");
+    if (!link) {
+      link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.id = "theme-link";
+      document.head.appendChild(link);
+    }
+    link.href = themes[theme];
+  }, [theme]);
+
+  return <RouterProvider router={router}/>;
+}
+
 // Render the app
 const rootElement = document.getElementById('app')
 if (rootElement && !rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(
     <StrictMode>
-      <RouterProvider router={router} />
+      <ThemeProvider>
+        <ThemeLoader/>
+      </ThemeProvider>
     </StrictMode>,
   )
 }

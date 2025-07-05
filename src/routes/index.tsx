@@ -1,14 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router'
-import '../App.css'
 
 export const Route = createFileRoute('/')({
-  component: App,
+  component: Desktop,
 })
 
-function App() {
+function Desktop() {
   return (
-    <div className="App">
-
+    <div>
     </div>
   )
 }

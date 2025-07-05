@@ -1,0 +1,10 @@
+@import "xp.css";
+
+@import "./xp/StartBar.css";
+
+body {
+    background-image: url('/bgxp.webp');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
