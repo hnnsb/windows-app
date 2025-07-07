@@ -1,6 +1,6 @@
 import Clock from "@/components/layout/Clock.tsx";
 import {useTheme} from "@/context/ThemeContext.tsx";
-import {useRouter} from "@tanstack/react-router";
+import { Link, useRouter } from "@tanstack/react-router";
 import "./StartBar.css"
 
 export default function StartBar() {
@@ -40,12 +40,13 @@ export default function StartBar() {
         </button>
         <span className={"separator"}></span>
         <span className={"group-grab"}></span>
-        <button role={"link"} onClick={() => router.navigate({to: "/routeA"})}>
-          route A
-        </button>
-        <button role={"link"} onClick={() => router.navigate({to: "/routeB"})}>
-          route B
-        </button>
+
+        <Link to={"/routeA"} className={"route"} >
+          <span className={"route-label"}>route A</span>
+        </Link>
+        <Link to={"/routeB"} className={"route"}>
+          <span className={"route-label"}>route B</span>
+        </Link>
       </div>
       <Clock/>
     </div>

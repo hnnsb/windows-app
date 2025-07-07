@@ -1,3 +1,5 @@
+@import "98.css/style.css";
+
 .start-bar-w98 {
     background: #c0c0c0;
     padding: 5px;
@@ -13,4 +15,66 @@
 
     box-shadow: inset 1px 1px grey,
     inset -1px -1px #ffffff;
+}
+
+.group-grab {
+    background: silver;
+    height: 2rem;
+    width: 4px;
+    box-shadow: inset -1px -1px grey,
+    inset 1px 1px #ffffff;
+}
+
+.separator {
+    background: silver;
+    height: 100%;
+    width: 3px;
+    box-shadow: inset 1px 0 grey,
+    inset -1px 0 #ffffff;
+}
+
+.route {
+    font-family: "Pixelated MS Sans Serif", Arial, serif;
+    -webkit-font-smoothing: none;
+    width: 10rem;
+    color: var(--text-color);
+    text-shadow: 0 0 var(--text-color);
+    background: var(--surface);
+    box-shadow: var(--border-raised-outer), var(--border-raised-inner);
+    border-radius: 0;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.route.active {
+    position: relative;
+    font-weight: bold;
+    box-shadow: var(--border-sunken-outer), var(--border-sunken-inner);
+
+}
+
+.route.active::before {
+    box-shadow: inset 0 1px var(--button-highlight);
+    margin: 3px;
+    position: absolute;
+    content: "";
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 0;
+    background: repeating-conic-gradient(var(--surface) 0 25%, var(--button-face) 0 50%) 50% / 5px 5px;
+}
+
+.route-label {
+    position: relative;
+    z-index: 1;
+}
+
+.route:focus {
+    position: relative;
+    outline: 1px dotted #000000;
+    outline-offset: -4px;
+    z-index: 2;
 }
